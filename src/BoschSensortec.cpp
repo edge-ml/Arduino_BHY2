@@ -130,6 +130,9 @@ void BoschSensortec::addSensorData(SensorDataPacket &sensorData)
 {
   // Overwrites oldest data when fifo is full 
   _sensorQueue.push(sensorData);
+  if (_sensorQueue.full()) {
+    _debug->println("-------- SENSOR QUEUE OVERFLOW ---------");
+  }
   // Alternative: handle the full queue by storing it in flash 
   sensorManager.process(sensorData);
 }

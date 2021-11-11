@@ -17,16 +17,27 @@ void BoschParser::convertTime(uint64_t time_ticks, uint32_t *s, uint32_t *ns)
     *ns = (uint32_t)(timestamp - ((*s) * UINT64_C(1000000000)));
 }
 
+void BoschParser::convertTimeMillis(uint64_t time_ticks, uint32_t *millis) {
+  uint32_t s;
+  uint32_t ns;
+  convertTime(time_ticks, &s, &ns);
+
+  // Convert to millis
+  *millis = s * 1000 + (ns / 1000000);
+}
+
 void BoschParser::parseData(const struct bhy2_fifo_parse_data_info *fifoData, void *arg)
 {
   SensorDataPacket sensorData;
   sensorData.sensorId = fifoData->sensor_id;
   sensorData.size = (fifoData->data_size > sizeof(sensorData.data)) ? sizeof(sensorData.data) : fifoData->data_size;
   memcpy(&sensorData.data, fifoData->data_ptr, sensorData.size);
-
+  convertTimeMillis(*fifoData->time_stamp, &sensorData.millis);
   if (_debug) {
     _debug->print("Sensor: ");
     _debug->print(sensorData.sensorId);
+    _debug->print("Time: ");
+    _debug->print(sensorData.millis);
     _debug->print("  value: ");
     for (uint8_t i = 0; i < (fifoData->data_size - 1); i++)
     {
