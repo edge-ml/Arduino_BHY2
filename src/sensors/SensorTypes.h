@@ -19,18 +19,15 @@ struct __attribute__((packed)) SensorConfigurationPacket {
 struct __attribute__((packed)) SensorDataPacket {
   uint8_t sensorId;
   uint8_t size;
-  uint32_t millis;
   uint8_t data[SENSOR_DATA_FIXED_LENGTH];
 
   float getFloat(uint8_t index) {
     float result = 0;
     uint8_t length = sizeof(result);
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      //to safe guard against overflow
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], sizeof(result));
     return result;
   }
 
@@ -45,10 +42,9 @@ struct __attribute__((packed)) SensorDataPacket {
     uint16_t result = 0;
     uint8_t length = sizeof(result);
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], length);
     return result;
   }
 
@@ -56,10 +52,9 @@ struct __attribute__((packed)) SensorDataPacket {
     uint32_t result = 0;
     uint8_t length = 3;
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], length);
     return result;
   }
 
@@ -67,10 +62,9 @@ struct __attribute__((packed)) SensorDataPacket {
     uint32_t result = 0;
     uint8_t length = sizeof(result);
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], length);
     return result;
   }
 
@@ -85,10 +79,9 @@ struct __attribute__((packed)) SensorDataPacket {
     int16_t result = 0;
     uint8_t length = sizeof(result);
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], length);
     return result;
   }
 
@@ -96,10 +89,9 @@ struct __attribute__((packed)) SensorDataPacket {
     int32_t result = 0;
     uint8_t length = sizeof(result);
     if (index + length > SENSOR_DATA_FIXED_LENGTH) {
-      length = SENSOR_DATA_FIXED_LENGTH > index ? SENSOR_DATA_FIXED_LENGTH - index : 0;
+      length = SENSOR_DATA_FIXED_LENGTH - index;
     }
-    if (length > 0)
-        memcpy(&result, &data[index], length);
+    memcpy(&result, &data[index], length);
     return result;
   }
 };

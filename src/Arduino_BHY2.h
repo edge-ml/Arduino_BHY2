@@ -9,7 +9,6 @@
 #include "sensors/SensorOrientation.h"
 #include "sensors/SensorXYZ.h"
 #include "sensors/SensorQuaternion.h"
-#include "sensors/SensorBSEC.h"
 #include "sensors/SensorActivity.h"
 #include "sensors/Sensor.h"
 

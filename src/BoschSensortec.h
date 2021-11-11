@@ -16,7 +16,7 @@ extern "C"
 }
 #endif
 
-#define SENSOR_QUEUE_SIZE   200
+#define SENSOR_QUEUE_SIZE   10
 #define WORK_BUFFER_SIZE    2048
 
 #define MAX_READ_WRITE_LEN 256

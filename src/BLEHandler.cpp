@@ -1,5 +1,5 @@
 #include "BLEHandler.h"
-#include "DeviceInfo.h"
+
 #include "BoschSensortec.h"
 
 // DFU channels
@@ -15,13 +15,6 @@ auto sensorDataUuid = "34c2e3bc-34aa-11eb-adc1-0242ac120002";
 auto sensorConfigUuid = "34c2e3bd-34aa-11eb-adc1-0242ac120002";
 BLECharacteristic sensorDataCharacteristic(sensorDataUuid, (BLERead | BLENotify), sizeof(SensorDataPacket));
 BLECharacteristic sensorConfigCharacteristic(sensorConfigUuid, BLEWrite, sizeof(SensorConfigurationPacket));
-
-// Device information channels
-BLEService deviceInfoService("45622510-6468-465a-b141-0b9b0f96b468");
-auto deviceIdentifierUuid = "45622511-6468-465a-b141-0b9b0f96b468";
-auto deviceGenerationUuid = "45622512-6468-465a-b141-0b9b0f96b468";
-BLECharacteristic deviceIdentifierCharacteristic(deviceIdentifierUuid, BLERead, sizeof(deviceIdentifier) + 1);
-BLECharacteristic deviceGenerationCharacteristic(deviceGenerationUuid, BLERead, sizeof(deviceGeneration) + 1);
 
 Stream* BLEHandler::_debug = NULL;
 
@@ -79,7 +72,6 @@ void BLEHandler::receivedSensorConfig(BLEDevice central, BLECharacteristic chara
   sensortec.configureSensor(data);
 }
 
-
 bool BLEHandler::begin()
 {
   if (!BLE.begin()) {
@@ -102,15 +94,6 @@ bool BLEHandler::begin()
   sensorService.addCharacteristic(sensorDataCharacteristic);
   BLE.addService(sensorService);
   sensorConfigCharacteristic.setEventHandler(BLEWritten, receivedSensorConfig);
-
-  // Device information
-  BLE.setAdvertisedService(deviceInfoService);
-  deviceInfoService.addCharacteristic(deviceIdentifierCharacteristic);
-  deviceInfoService.addCharacteristic(deviceGenerationCharacteristic);
-  BLE.addService(deviceInfoService);
-  deviceIdentifierCharacteristic.writeValue(deviceIdentifier);
-  deviceGenerationCharacteristic.writeValue(deviceGeneration);
-
 
   //
   BLE.advertise();
