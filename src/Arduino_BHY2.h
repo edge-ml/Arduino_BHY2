@@ -9,6 +9,7 @@
 #include "sensors/SensorOrientation.h"
 #include "sensors/SensorXYZ.h"
 #include "sensors/SensorQuaternion.h"
+#include "sensors/SensorBSEC.h"
 #include "sensors/SensorActivity.h"
 #include "sensors/Sensor.h"
 
@@ -39,7 +40,8 @@ private:
 };
 
 class Arduino_BHY2 {
-public:
+private:
+  friend class Edge_ML;
   Arduino_BHY2();
   virtual ~Arduino_BHY2();
 
@@ -67,7 +69,7 @@ public:
 
   void debug(Stream &stream);
 
-private:
+
   Stream *_debug;
 
   void pingI2C();
@@ -81,7 +83,5 @@ private:
 
   NiclaConfig _niclaConfig;
 };
-
-extern Arduino_BHY2 BHY2;
 
 #endif

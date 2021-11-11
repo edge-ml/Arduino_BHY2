@@ -65,6 +65,7 @@ void Arduino_BHY2::setLDOTimeout(int time) {
 
 bool Arduino_BHY2::begin(NiclaConfig config, NiclaWiring niclaConnection)
 {
+  if (_debug) _debug->println("Starting this library");
   _niclaConfig = config;
 
   if (niclaConnection == NICLA_AS_SHIELD) {
@@ -240,5 +241,3 @@ void Arduino_BHY2::debug(Stream &stream)
   dfuManager.debug(stream);
   BoschParser::debug(stream);
 }
-
-Arduino_BHY2 BHY2;

@@ -17,6 +17,15 @@ void BoschParser::convertTime(uint64_t time_ticks, uint32_t *s, uint32_t *ns)
     *ns = (uint32_t)(timestamp - ((*s) * UINT64_C(1000000000)));
 }
 
+void BoschParser::convertTimeMillis(uint64_t time_ticks, uint32_t *millis) {
+  uint32_t s;
+  uint32_t ns;
+  convertTime(time_ticks, &s, &ns);
+
+  // Convert to millis
+  *millis = s * 1000 + (ns / 1000000);
+}
+
 void BoschParser::parseData(const struct bhy2_fifo_parse_data_info *fifoData, void *arg)
 {
   SensorDataPacket sensorData;
@@ -39,9 +48,18 @@ void BoschParser::parseData(const struct bhy2_fifo_parse_data_info *fifoData, vo
     }
     _debug->println("");
   }
+  if (_debug) _debug->println(*fifoData->time_stamp);
+  uint32_t millis;
+  convertTimeMillis(*fifoData->time_stamp, &millis);
+  sensorData.millis = millis;
 
+  if (_debug) {
+    _debug->print("Millis: ");
+    _debug->println(millis);
+  }
   sensortec.addSensorData(sensorData);
 }
+
 
 void BoschParser::parseMetaEvent(const struct bhy2_fifo_parse_data_info *callback_info, void *callback_ref)
 {
@@ -202,6 +220,8 @@ void BoschParser::parseDebugMessage(const struct bhy2_fifo_parse_data_info *call
     _debug->print(" data: ");
     _debug->println((char*)&callback_info->data_ptr[1]);
   }
+
+
   //printf("[DEBUG MSG]; T: %u.%09u; flag: 0x%x; data: %s\r\n",
         //s,
         //ns,

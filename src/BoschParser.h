@@ -19,6 +19,7 @@ extern "C"
 class BoschParser {
 public:
   static void convertTime(uint64_t time_ticks, uint32_t *s, uint32_t *ns);
+  static void convertTimeMillis(uint64_t time_ticks, uint32_t *millis);
   static void parseData(const struct bhy2_fifo_parse_data_info *fifoData, void *arg);
   static void parseMetaEvent(const struct bhy2_fifo_parse_data_info *callback_info, void *callback_ref);
   static void parseGeneric(const struct bhy2_fifo_parse_data_info *callback_info, void *callback_ref);
