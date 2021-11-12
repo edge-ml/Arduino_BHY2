@@ -87,6 +87,7 @@ bool BLEHandler::begin()
   }
   bleActive = true;
   BLE.setLocalName("NICLA");
+  BLE.setDeviceName("NICLA");
 
   // DFU channel
   BLE.setAdvertisedService(dfuService);
