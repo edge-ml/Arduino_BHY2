@@ -20,8 +20,8 @@ BLECharacteristic sensorConfigCharacteristic(sensorConfigUuid, BLEWrite, sizeof(
 BLEService deviceInfoService("45622510-6468-465a-b141-0b9b0f96b468");
 auto deviceIdentifierUuid = "45622511-6468-465a-b141-0b9b0f96b468";
 auto deviceGenerationUuid = "45622512-6468-465a-b141-0b9b0f96b468";
-BLECharacteristic deviceIdentifierCharacteristic(deviceIdentifierUuid, BLERead, sizeof(deviceIdentifier) + 1);
-BLECharacteristic deviceGenerationCharacteristic(deviceGenerationUuid, BLERead, sizeof(deviceGeneration) + 1);
+BLECharacteristic deviceIdentifierCharacteristic(deviceIdentifierUuid, BLERead, sizeof(deviceIdentifier));
+BLECharacteristic deviceGenerationCharacteristic(deviceGenerationUuid, BLERead, sizeof(deviceGeneration));
 
 Stream* BLEHandler::_debug = NULL;
 
