@@ -7,7 +7,7 @@ Firmware to use with the Nicla Sense Me used to record sensor data with edge-ml 
 2. Install the Arduino IDE on your PC and open it
 
 ## Installe Firmware on Nicla Sense ME
-1. Download the source code of the latest firmware version as .zip form the [release page](https://github.com/edge-ml/nicla-sense-me-fw/releases).
+1. Download the source code of the latest firmware (Latest, not Draft) version as .zip form the [release page](https://github.com/edge-ml/nicla-sense-me-fw/releases).
 2. Add the downloaded .zip file as a library to the Arduino IDE: `Sketch => Include Library => Add .ZIP library`.
 3. Select the firmware .ino file: `Examples => Edge_ML => App`.
 4. Upload firmware.
