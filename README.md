@@ -7,6 +7,8 @@ Firmware to use with the Nicla Sense ME to record sensor data with edge-ml over 
 2. Install the Arduino IDE on your PC
 3. Open the Arduino IDE
 
+**⚠️ IMPORTANT: YOUR ARDUINO IDE HAS TO BE AT LEAST AT VERSION 1.8.13 !**
+
 ## Installe Firmware on Nicla Sense ME
 1. Add the board-specific support files of the Nicla Sense Me by going to `Tools => Board: ... => Board Manager`. 
 2. In the dialog, seach for "nicla" and install `Arduino Mbed OS Nicla Boards by Arduino` (this may take a while). Note: on Windows, make sure to confirm the dialog that requests to do changes on your PC that pops up during installation (otherwise drivers can not be installed successfully).
