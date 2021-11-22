@@ -9,7 +9,7 @@ Firmware to use with the Nicla Sense ME to record sensor data with edge-ml over 
 
 ## Installe Firmware on Nicla Sense ME
 1. Add the board-specific support files of the Nicla Sense Me by going to `Tools => Board: ... => Board Manager`. 
-2. In the dialog, seach for "nicla" and install `Arduino Mbed OS Nicla Boards by Arduino` (this may take a while)
+2. In the dialog, seach for "nicla" and install `Arduino Mbed OS Nicla Boards by Arduino` (this may take a while). Note: on Windows, make sure to confirm the dialog that requests to do changes on your PC that pops up during installation (otherwise drivers can not be installed successfully).
 3. Configure your Arduino IDE to compile for the Nicla Sense ME by selecting ``Tools => Board => Nicla Sense ME``
 4. Select the port by clicking `Tools => Port => THE PORT YOUR NICLA IS CONNECTED TO` (Hint: if the name of the Nicla is not showing in the list of ports, you can identify the correct port by plugging the Nicla in and out and re-opening the menu which will either show or hide the Port)
 5. Download the source code of the latest firmware (Latest, not Draft) version as .zip form the [release page](https://github.com/edge-ml/nicla-sense-me-fw/releases).
