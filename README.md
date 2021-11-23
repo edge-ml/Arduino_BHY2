@@ -18,7 +18,6 @@ Note: on Windows, make sure to confirm the dialog that requests to do changes on
 5. Download the source code of the latest firmware (Latest, not Draft) version as .zip form the [release page](https://github.com/edge-ml/nicla-sense-me-fw/releases).
 6. Add the downloaded .zip file as a library to the Arduino IDE: `Sketch => Include Library => Add .ZIP library`.
 7. Open the edge-ml firmware by clicking: `Files => Examples => Edge_ML => App`.
-8. Install the ArduinoBLE library by clicking `Sketch => Add Library => Manage Libraries` and search for `ArduinoBLE by Arduino`. Then hit install.
-9. Upload the firmware to your Nicla by clicking the right facing arrow in the top menu bar. This will compile the firmware and upload to your Nicla. 
-10. **Compilation may take a while and give you a lot of warnings. Don't worry, this is expected as long as it does not fail.**
-11. You are now ready to connect to your Nicla from the edge-ml website
+8. Upload the firmware to your Nicla by clicking the right facing arrow in the top menu bar. This will compile the firmware and upload to your Nicla. 
+9. **Compilation may take a while and give you a lot of warnings. Don't worry, this is expected as long as it does not fail.**
+10. You are now ready to connect to your Nicla from the edge-ml website
