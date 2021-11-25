@@ -1,3 +1,5 @@
+**⚠️⚠️ WE RECOMMEND YOU INSTALL THE UNIFIED EDGE-ML ARDUINO LIBRARY FOLLOWING THE INSTRUCTIONS [HERE](https://github.com/edge-ml/EdgeML-Arduino)⚠️⚠️**
+
 # nicla-sense-me-fw
 
 Firmware to use with the Nicla Sense ME to record sensor data with edge-ml over Web Bluetooth.
