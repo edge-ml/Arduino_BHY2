@@ -2,7 +2,7 @@
 
 # nicla-sense-me-fw
 
-Firmware to use with the Nicla Sense ME to record sensor data with edge-ml over Web Bluetooth.
+Firmware to use with the Nicla Sense ME to record sensor data with [edge-ml](https://edge-ml.org) over Web Bluetooth.
 
 ## Before you start
 1. Download the the Arduino IDE for your PC [here](https://www.arduino.cc/en/software)
